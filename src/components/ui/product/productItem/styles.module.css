@@ -17,7 +17,7 @@
     object-fit: cover;
     overflow: hidden;
     position: relative;
-    
+    cursor: pointer;
 }
 
 .product_image img {
@@ -25,9 +25,33 @@
     animation: initProduct 1s ease;
 }
 
+.product_back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+    z-index: 10;
+    opacity: 0;
+
+    transition: all 0.3s ease;
+}
+
+.product_back:hover {
+    animation: backProduct 0.7s ease;
+}
+
+
+.product_back__hovered {
+    opacity: 0.28;
+}
+
 .product_name {
     font-size: 0.875rem;
     line-height: 130%;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
 }
 
 .product_description {
@@ -51,5 +75,19 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes backProduct {
+  from {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+
+  to {
+    opacity: 0;
   }
 }
