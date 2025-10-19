@@ -5,15 +5,37 @@ import Button from "@/components/ui/shared/button/Button";
 import { notFound } from "next/navigation";
 import FullDescription from "@/components/pages/product/slug/fullDescription/FullDescription";
 import Characteristics from "@/components/pages/product/slug/characteristics/Characteristics";
+import { Metadata } from "next";
+
+export async function generateMetadata(
+  {params}: {params: Promise<PageProductParams>}
+): Promise<Metadata> {
+  const resParams = await params
+  const product_name = resParams.product_name 
+
+  const res = await fetch(`http://localhost:8080/api/products/p/${product_name}`)
+
+    if (!res.ok) {
+        return {
+            title: "Товар не найден",
+            description: "Информация о товаре недоступна",
+        };
+    }
+
+  const dta: IProduct = await res.json()
+
+  return {
+    title: dta.name,
+    description: dta.description,
+  }
+}
 
 export default async function Page ({params}: {params: Promise<PageProductParams>}) {
     const resParams = await params
     const {product_name} = resParams
 
-    const res = await fetch(`http://localhost:3000/api/product/${product_name}`)
+    const res = await fetch(`http://localhost:8080/api/products/p/${product_name}`)
     const product: IProduct = await res.json()
-
-    
 
     return (
         <div className={styles.product}>

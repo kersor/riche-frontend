@@ -20,11 +20,10 @@ export async function generateMetadata(
 export default async function CatalogName ({params}: {params: Promise<PageCatalogParams>}) {
     const param = await params
     const {catalog_name} = param
-    const res = await fetch(`http://localhost:3000/api/catalog/${catalog_name}`, { cache: "no-store" });
+    const res = await fetch(`http://localhost:8080/api/products/${catalog_name}`, { cache: "no-store" });
 
     const data = await res.json()
-    
-    
+
     return (
         <ProductList products={data} />
     )

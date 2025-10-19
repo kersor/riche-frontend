@@ -3,6 +3,7 @@ export interface PageProductParams {
 }
 
 export enum EnumCharacteristics {
+  id = "id",
   skinType = "Тип кожи",
   fragrance = "Аромат",
   age = "Возраст",
@@ -13,18 +14,20 @@ export enum EnumCharacteristics {
 }
 
 export interface IProduct {
-  id: number;
+  id: string;
   name: string;
   slug: string;
   image: string;
   price: number;
   description: string;
-  categories: string;
   fullDescription: string;
+
+  category: ICategory;
   characteristics: ICharacteristics;
 }
 
 export interface ICharacteristics {
+  id: string
   skinType: string;
   fragrance: string;
   age: number;
@@ -35,4 +38,10 @@ export interface ICharacteristics {
   };
   volume: string;
   contraindications?: string;
+}
+
+export interface ICategory {
+  id: string
+  name: string
+  slug: string
 }
