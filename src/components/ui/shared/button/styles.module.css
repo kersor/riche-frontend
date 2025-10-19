@@ -1,0 +1,35 @@
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 0.875rem;
+}
+
+.button_text {
+    display: flex;
+    gap: 5px;
+    
+    cursor: pointer;
+}
+
+.link {
+    font-size: 0.75rem;
+}
+
+.link .button_text{
+    text-transform: uppercase;
+}
+
+.product {
+    border-color: rgb(156 163 175);
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+    height: 2.5rem;
+    cursor: pointer;
+    padding: 0 30px;
+}
+
+.fullWidth {
+    width: 100%;
+}

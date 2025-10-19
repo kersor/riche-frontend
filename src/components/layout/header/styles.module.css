@@ -1,0 +1,26 @@
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo_title {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: 20px;
+}
+
+.menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1.5rem;
+}
+
+.actions {
+    display: flex;
+    gap: 1.5rem;
+}

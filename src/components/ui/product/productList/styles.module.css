@@ -1,0 +1,5 @@
+.list_wrapper {
+    display: grid;
+    gap: 12px 24px;
+    grid-template-columns:repeat(auto-fill,minmax(400px,1fr));
+}
