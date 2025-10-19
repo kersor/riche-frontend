@@ -1,7 +1,7 @@
-import { IProduct } from '@/types/catalog'
 import React from 'react'
 import ProductItem from '../productItem/ProductItem'
 import styles from './styles.module.css'
+import { IProduct } from '@/types/product'
 
 interface Props {
     products: IProduct[]

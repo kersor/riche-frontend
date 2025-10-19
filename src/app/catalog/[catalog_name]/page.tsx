@@ -9,10 +9,8 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const resParams = await params
   const page = resParams.catalog_name as unknown as PAGES_LIST
-  
   const dta = PAGES_METADATA_CATALOG[page]
 
-  console.log(page, dta)
   return {
     title: dta.name,
     description: dta.description,

@@ -7,7 +7,7 @@ import Button from '@/components/ui/shared/button/Button'
 
 const Header = () => {
   return (
-    <header className='fixed w-full z-10 top-0 left-0 flex justify-between items-center px-3 h-[50px] border-b border-[#F4F4F5]'>
+    <header className='fixed w-full z-10 top-0 left-0 flex justify-between items-center px-3 bg-white h-[50px] border-b border-[#F4F4F5]'>
         <Link className={styles.logo} href="/">
             <Image
                 className={styles.logo_icon}
@@ -23,8 +23,6 @@ const Header = () => {
             <MenuLink title="Новинки" href="/catalog/novinki" />
             <MenuLink title="Лицо" href="/catalog/face" />
             <MenuLink title="Волосы" href="/catalog/hair" />
-            {/* <MenuLink title="Тело" href="/catalog/bestsellery" />
-            <MenuLink title="Наборы" href="/catalog/bestsellery" /> */}
         </div>
 
         <div className={styles.actions}>

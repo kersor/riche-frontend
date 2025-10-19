@@ -1,8 +1,9 @@
 import { catalog } from "@/data/catalog";
-import { IProduct, PageCatalogParams } from "@/types/catalog";
+import { PageCatalogParams } from "@/types/catalog";
+import { IProduct } from "@/types/product";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request, { params }: { params:  Promise<PageCatalogParams> }) {
+export async function GET(req: Request, { params }: { params: Promise<PageCatalogParams> }) {
     const resParam = await params;
     const catalog_name = resParam?.catalog_name
 

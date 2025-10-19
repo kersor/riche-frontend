@@ -4,8 +4,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import styles from './styles.module.css'
 import Image from 'next/image'
 import Button from '../../shared/button/Button'
-import { IProduct } from '@/types/catalog'
 import clsx from 'clsx'
+import Link from 'next/link'
+import { IProduct } from '@/types/product'
 
 interface Props {
   product: IProduct
@@ -51,8 +52,8 @@ const ProductItem = ({
   return (
     <div className={styles.product}>
         <div className={styles.product_main}>
-          <div ref={imageRef} className={styles.product_image}>
-              <div className={clsx(
+          <Link href={`/product/${product.slug}`} className={styles.product_image} target='_tablet'>
+              <div ref={imageRef} className={clsx(
                 styles.product_back,
                 isHover.image && styles.product_back__hovered,
               )} />
@@ -61,7 +62,7 @@ const ProductItem = ({
                   alt={product.image}
                   fill
               />
-          </div>
+          </Link>
 
           <div ref={nameRef} className={clsx(
             styles.product_name,
