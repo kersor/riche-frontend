@@ -4,7 +4,6 @@ export type PAGES_LIST =
 "face" |
 "hair"
 
-
 interface IPage {
     path: string,
     name: string
