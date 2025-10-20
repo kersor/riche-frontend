@@ -1,7 +1,9 @@
 import ProductList from "@/components/ui/product/productList/ProductList";
 
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND;
+
 export default async function Home () {
-  const res = await fetch(`http://localhost:8080/api/products`, { cache: "no-store" });
+  const res = await fetch(`${backendUrl}/products`, { cache: "no-store" });
   const data = await res.json()
 
 

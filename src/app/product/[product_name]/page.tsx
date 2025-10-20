@@ -7,13 +7,15 @@ import FullDescription from "@/components/pages/product/slug/fullDescription/Ful
 import Characteristics from "@/components/pages/product/slug/characteristics/Characteristics";
 import { Metadata } from "next";
 
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND;
+
 export async function generateMetadata(
   {params}: {params: Promise<PageProductParams>}
 ): Promise<Metadata> {
   const resParams = await params
   const product_name = resParams.product_name 
 
-  const res = await fetch(`http://localhost:8080/api/products/p/${product_name}`)
+  const res = await fetch(`${backendUrl}/products/p/${product_name}`)
 
     if (!res.ok) {
         return {
@@ -34,7 +36,7 @@ export default async function Page ({params}: {params: Promise<PageProductParams
     const resParams = await params
     const {product_name} = resParams
 
-    const res = await fetch(`http://localhost:8080/api/products/p/${product_name}`)
+    const res = await fetch(`${backendUrl}/products/p/${product_name}`)
     const product: IProduct = await res.json()
 
     return (

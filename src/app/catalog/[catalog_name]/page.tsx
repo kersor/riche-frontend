@@ -4,6 +4,8 @@ import { PageCatalogParams } from '@/types/catalog';
 import { Metadata } from 'next'
 import React from 'react'
 
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND;
+
 export async function generateMetadata(
   {params}: {params: Promise<PageCatalogParams>}
 ): Promise<Metadata> {
@@ -20,7 +22,7 @@ export async function generateMetadata(
 export default async function CatalogName ({params}: {params: Promise<PageCatalogParams>}) {
     const param = await params
     const {catalog_name} = param
-    const res = await fetch(`http://localhost:8080/api/products/${catalog_name}`, { cache: "no-store" });
+    const res = await fetch(`${backendUrl}/products/${catalog_name}`, { cache: "no-store" });
 
     const data = await res.json()
 

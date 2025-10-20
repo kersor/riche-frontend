@@ -1,4 +1,6 @@
-import React from 'react'
+"use client"
+
+import React, { useEffect } from 'react'
 import styles from './styles.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
