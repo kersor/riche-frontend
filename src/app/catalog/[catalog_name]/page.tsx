@@ -22,7 +22,7 @@ export async function generateMetadata(
 export default async function CatalogName ({params}: {params: Promise<PageCatalogParams>}) {
     const param = await params
     const {catalog_name} = param
-    const res = await fetch(`${backendUrl}/products/${catalog_name}`, { cache: "no-store" });
+    const res = await fetch(`${backendUrl}/products/${catalog_name}`);
 
     const data = await res.json()
 
