@@ -1,10 +1,9 @@
 import ProductList from '@/components/ui/product/productList/ProductList';
 import { PAGES_LIST, PAGES_METADATA_CATALOG } from '@/config/metadata/pages';
+import { fetchProducts } from '@/lib/getProducts';
 import { PageCatalogParams } from '@/types/catalog';
 import { Metadata } from 'next'
 import React from 'react'
-
-const backendUrl = process.env.NEXT_PUBLIC_BACKEND;
 
 export async function generateMetadata(
   {params}: {params: Promise<PageCatalogParams>}
@@ -22,9 +21,7 @@ export async function generateMetadata(
 export default async function CatalogName ({params}: {params: Promise<PageCatalogParams>}) {
     const param = await params
     const {catalog_name} = param
-    const res = await fetch(`${backendUrl}/products/${catalog_name}`);
-
-    const data = await res.json()
+    const data = await fetchProducts(catalog_name)
 
     return (
         <ProductList products={data} />

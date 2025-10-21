@@ -6,8 +6,8 @@ import { notFound } from "next/navigation";
 import FullDescription from "@/components/pages/product/slug/fullDescription/FullDescription";
 import Characteristics from "@/components/pages/product/slug/characteristics/Characteristics";
 import { Metadata } from "next";
+import { fetchProduct } from "@/lib/getProducts";
 
-const backendUrl = process.env.NEXT_PUBLIC_BACKEND;
 
 export async function generateMetadata(
   {params}: {params: Promise<PageProductParams>}
@@ -15,20 +15,19 @@ export async function generateMetadata(
   const resParams = await params
   const product_name = resParams.product_name 
 
-  const res = await fetch(`${backendUrl}/products/p/${product_name}`)
+  const data = await fetchProduct(product_name)
 
-    if (!res.ok) {
+    if (!data) {
         return {
             title: "Товар не найден",
             description: "Информация о товаре недоступна",
         };
     }
 
-  const dta: IProduct = await res.json()
 
   return {
-    title: dta.name,
-    description: dta.description,
+    title: data.name,
+    description: data.description,
   }
 }
 
@@ -36,8 +35,8 @@ export default async function Page ({params}: {params: Promise<PageProductParams
     const resParams = await params
     const {product_name} = resParams
 
-    const res = await fetch(`${backendUrl}/products/p/${product_name}`)
-    const product: IProduct = await res.json()
+    const product = await fetchProduct(product_name)
+    if (!product) return null
 
     return (
         <div className={styles.product}>
