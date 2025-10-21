@@ -6,6 +6,7 @@ export default async function Home () {
   const res = await fetch(`${backendUrl}/products`);
   const data = await res.json()
 
+  if (!data) return null
 
   return (
     <div>
